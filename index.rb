@@ -20,6 +20,9 @@ while true
     sold_out = filter_page.include? "Soldout"
     unless sold_out === false
         puts "Sold out @ #{Time.now}"
+        CSV.open('log.csv','w') do |csv|
+            csv << "Sold out @ #{Time.now}"
+        end
     else
         open_browser
         break
